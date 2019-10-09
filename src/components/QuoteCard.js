@@ -1,21 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './QuoteCard.css'
 
-const QuoteCard = (props) => {
-    return (
+class QuoteCard extends Component {
+
+    render() {
+        return(
         <figure className="QuoteCard">
             <img
-            src={props.image}
-            alt={props.character}
+            src={this.props.image}
+            alt={this.props.character}
             />
             <figcaption>
                 <blockquote>
-                {props.quote}
+                {this.props.quote}
                 </blockquote>
-                <cite>{props.character}</cite>
+                <cite>{this.props.character}</cite>
+                {/* <span className="voyant"/> */}
             </figcaption>
         </figure>
-    );
+        )
+    };
 }
 
 

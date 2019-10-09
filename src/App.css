@@ -1,9 +1,12 @@
 .App {
-  text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 8vmin;
+}
+.App-logo-turn {
+  height: 8vmin;
+  animation: turnLogo 5s linear infinite;
 }
 
 .App-header {
@@ -19,4 +22,33 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.isWorking{
+  background-color: #dddddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 420px;
+  padding: 32px;
+}
+
+.appButton {
+  width: 80px;
+  height: 80px;
+  border-radius:50%;
+  background-color: #09d3ac;
+  color: aliceblue;
+}
+
+@keyframes turnLogo{
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(180deg) scale(0.8);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }

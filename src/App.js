@@ -1,17 +1,35 @@
-import React from 'react';
+import React, {Component}from 'react';
 import Navbar from './components/Navbar';
-import QuoteCard from './components/QuoteCard';
 import QuoteList from './components/QuoteList';
-// import logo from './logo.svg';
-// import './App.css';
+import Lamp from './Lamp';
+import logo from './logo.svg';
+import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Navbar />
-      <QuoteList />
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      working: false
+    };
+  }
+
+  changeState = () => {
+    this.setState({working: !this.state.working})
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <Navbar />
+        <div className="isWorking">
+          <button className="appButton" onClick={this.changeState}>Change State</button>
+          <p>Homer is {this.state.working ? "working" : "not working"}</p>
+          <img className={this.state.working ? "App-logo-turn" : "App-logo"} src={logo} alt="logo"/>
+        </div>
+        <QuoteList />
+      </div>
+    );
+  }
 }
 
 export default App;
