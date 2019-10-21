@@ -1,9 +1,9 @@
 import React, {Component}from 'react';
 import Navbar from './components/Navbar';
 import QuoteList from './components/QuoteList';
-import Lamp from './Lamp';
 import logo from './logo.svg';
 import './App.css';
+import QuoteForm from './components/QuoteForm';
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
+        <QuoteForm/>
         <div className="isWorking">
           <button className="appButton" onClick={this.changeState}>Change State</button>
           <p>Homer is {this.state.working ? "working" : "not working"}</p>
