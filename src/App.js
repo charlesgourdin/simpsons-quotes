@@ -1,33 +1,42 @@
 import React, {Component}from 'react';
 import Navbar from './components/Navbar';
-import QuoteList from './components/QuoteList';
-import logo from './logo.svg';
+import QuoteCard from './components/QuoteCard';
 import './App.css';
-import QuoteForm from './components/QuoteForm';
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      working: false
+      quote:"",
+      image:"",
+      character:""
     };
   }
 
-  changeState = () => {
-    this.setState({working: !this.state.working})
+  getCard= ()=> {
+    // Send the request
+    axios.get('https://quests.wilders.dev/simpsons-quotes/quotes')
+      // Extract the DATA from the received response
+      .then(response => response.data)
+      // Use this data to update the state
+      .then(data => {
+        console.log(data)
+        this.setState({
+          quote: data[0].quote,
+          image: data[0].image,
+          character: data[0].character,
+        });
+    });
   }
+
 
   render(){
     return (
       <div className="App">
         <Navbar />
-        <QuoteForm/>
-        <div className="isWorking">
-          <button className="appButton" onClick={this.changeState}>Change State</button>
-          <p>Homer is {this.state.working ? "working" : "not working"}</p>
-          <img className={this.state.working ? "App-logo-turn" : "App-logo"} src={logo} alt="logo"/>
-        </div>
-        <QuoteList />
+        <QuoteCard quote={this.state.quote} image={this.state.image} character={this.state.character}/>
+        <button onClick={this.getCard}>Change it!</button>
       </div>
     );
   }
